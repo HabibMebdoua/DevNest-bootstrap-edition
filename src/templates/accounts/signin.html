@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Register section -->
+<div class="container py-5">
+    <div class="row align-items-center min-vh-75">
+        
+        <!-- Logo Section -->
+        <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <img src="{% static '/img/logo.png' %}" alt="Logo" class="img-fluid" style="max-width: 18rem;">
+        </div>
+        
+        <!-- Register Form Section -->
+        <div class="col-12 col-md-6">
+            <div class="card shadow-sm border-0 mt-4 mt-md-0">
+                <div class="card-body p-4 p-md-5">
+                    <h2 class="card-title text-center mb-4 fs-3 fw-bold">إنشاء حساب</h2>
+                    
+                    <form action="#" method="POST">
+                        {% csrf_token %}
+                        
+                        <!-- Django Form Fields with Bootstrap styling -->
+                        <div class="django-form-fields">
+                            {{ form }}
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg fw-bold">
+                                تسجيل
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<style>
+    .min-vh-75 {
+        min-height: 75vh;
+    }
+    
+    /* Style Django form fields to match Bootstrap */
+    .django-form-fields p {
+        margin-bottom: 1rem;
+    }
+    
+    .django-form-fields label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #212529;
+    }
+    
+    .django-form-fields input[type="text"],
+    .django-form-fields input[type="email"],
+    .django-form-fields input[type="password"],
+    .django-form-fields select,
+    .django-form-fields textarea {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1.125rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    
+    .django-form-fields input:focus,
+    .django-form-fields select:focus,
+    .django-form-fields textarea:focus {
+        border-color: #0d6efd;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .django-form-fields .helptext {
+        font-size: 0.875rem;
+        color: #6c757d;
+        margin-top: 0.25rem;
+    }
+    
+    .django-form-fields .errorlist {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style: none;
+    }
+</style>
+{% endblock %}

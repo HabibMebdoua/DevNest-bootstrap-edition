@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Login section -->
+<div class="container py-5">
+    <div class="row align-items-center min-vh-75">
+        
+        <!-- Logo Section -->
+        <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <img src="{% static '/img/logo.png' %}" alt="Logo" class="img-fluid" style="max-width: 18rem;">
+        </div>
+        
+        <!-- Login Form Section -->
+        <div class="col-12 col-md-6">
+            <div class="card shadow-sm border-0 mt-4 mt-md-0">
+                <div class="card-body p-4 p-md-5">
+                    <h2 class="card-title text-center mb-4 fs-3 fw-bold">تسجيل الدخول</h2>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <!-- Email Field -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-medium text-dark">البريد الإلكتروني</label>
+                            <input type="email" 
+                                   class="form-control form-control-lg" 
+                                   id="email" 
+                                   name="email" 
+                                   required 
+                                   placeholder="أدخل بريدك الإلكتروني">
+                        </div>
+                        
+                        <!-- Password Field -->
+                        <div class="mb-4">
+                            <label for="password" class="form-label fw-medium text-dark">كلمة المرور</label>
+                            <input type="password" 
+                                   class="form-control form-control-lg" 
+                                   id="password" 
+                                   name="password" 
+                                   required 
+                                   placeholder="أدخل كلمة المرور">
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg fw-bold">
+                                دخول
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<style>
+    .min-vh-75 {
+        min-height: 75vh;
+    }
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% if messages %}
+  <div class="d-flex flex-column align-items-center w-100 my-3">
+    {% for message in messages %}
+      <div class="alert shadow-sm mx-3 mb-2 {% if 'success' in message.tags %}alert-success
+                  {% elif 'error' in message.tags %}alert-danger
+                  {% elif 'warning' in message.tags %}alert-warning
+                  {% elif 'info' in message.tags %}alert-info
+                  {% else %}alert-secondary{% endif %}" 
+           style="width: 100%; max-width: 18rem;" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Send email -->
+<div class="container py-5">
+    <div class="d-flex flex-column flex-md-row-reverse justify-content-between align-items-center bg-white shadow-sm px-4 py-3 rounded-pill">
+        <div class="d-flex flex-column flex-md-row-reverse justify-content-center align-items-center gap-3">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" width="100">
+            <h1 class="h4 mb-0">Send me an e-mail</h1>
+        </div>
+        <div class="mt-3 mt-md-0">
+            <a href="#" class="btn btn-primary rounded-pill px-3">Send now</a>
+        </div>
+    </div>
+</div>
+
+<!-- Who i am -->
+<section>
+    <div class="container py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col-md-6">
+                <div class="bg-white p-4 rounded shadow-sm text-center">
+                    <h1 class="display-4 text-secondary mb-4">من انا؟</h1>
+                    <p class="fs-5 lh-lg">
+                        خريج حديث في مجال علوم الحاسوب، يمتلك أساسًا قويًا في حل المشكلات، والتفكير المنطقي، والمبادئ الأساسية للبرمجيات.
+                        يتمتع بمهارات عالية في العمل الجماعي، والتواصل، وإدارة الوقت، إلى جانب قدرة كبيرة على التعلم الذاتي والتكيف السريع.
+                        متمكن من استخدام التكنولوجيا ومتحمس للتعلم المستمر. يتقن اللغة الإنجليزية بشكل احترافي، مما يمكنه من فهم المصادر التقنية
+                        ومواكبة الاتجاهات العالمية.
+                    </p>
+                    <a href="{% static 'files/cv.pdf' %}" download class="btn btn-primary rounded-pill mt-3">
+                        <i class="fas fa-file-download me-2"></i> تحميل السيرة الذاتية
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{% static 'img/question.svg' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- My skills -->
+<section>
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="h2 fw-bold text-secondary">مهاراتي</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body">
+                        <img src="{% static 'img/code.png' %}" alt="Code" class="mb-3" width="60">
+                        <h5 class="card-title fw-bold text-secondary">تطوير تطبيقات الويب</h5>
+                        <p class="card-text">خبرة في بناء تطبيقات ويب احترافية باستخدام إطار Django، مع التركيز على الأمان، الأداء، وربط الواجهة الخلفية مع قواعد البيانات. تصميم واجهات متجاوبة باستخدام HTML وCSS وBootstrap.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body">
+                        <img src="{% static 'img/mobile.png' %}" alt="Mobile" class="mb-3" width="55">
+                        <h5 class="card-title fw-bold text-secondary">تطوير تطبيقات الموبايل</h5>
+                        <p class="card-text">إنشاء تطبيقات هجينة (iOS & Android) باستخدام Flutter وDart، مع واجهات أنيقة وأداء عالي وتجربة مستخدم متميزة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body">
+                        <img src="{% static 'img/computer.png' %}" alt="Desktop" class="mb-3" width="55">
+                        <h5 class="card-title fw-bold text-secondary">تطوير تطبيقات سطح المكتب</h5>
+                        <p class="card-text">تطوير برامج سطح مكتب باستخدام تقنيات مثل PyQt أو Electron لتلبية احتياجات الأعمال والمستخدمين النهائيين.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body">
+                        <img src="{% static 'img/database.png' %}" alt="Database" class="mb-3" width="55">
+                        <h5 class="card-title fw-bold text-secondary">التعامل مع قواعد البيانات</h5>
+                        <p class="card-text">خبرة في تصميم وربط قواعد البيانات مثل PostgreSQL وMySQL وSQLite، وإجراء العمليات المعقدة (CRUD)، وتحسين الأداء.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body">
+                        <img src="{% static 'img/ui-ux.png' %}" alt="UI/UX" class="mb-3" width="55">
+                        <h5 class="card-title fw-bold text-secondary">تصميم UI/UX</h5>
+                        <p class="card-text">تصميم واجهات مستخدم جذابة وسهلة الاستخدام باستخدام أدوات مثل Figma وAdobe XD، مع التركيز على تجربة المستخدم وسهولة التنقل.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="card-body">
+                        <img src="{% static 'img/hosting-server.png' %}" alt="Hosting" class="mb-3" width="65">
+                        <h5 class="card-title fw-bold text-secondary">استضافة المواقع (Web Hosting)</h5>
+                        <p class="card-text">إعداد ونشر المواقع باستخدام خدمات الاستضافة مثل cPanel وDigitalOcean وHeroku، مع إدارة النطاقات وربط قواعد البيانات.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section>
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="h2 fw-bold text-secondary">تواصل معي</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <a href="#" target="_blank" class="text-decoration-none">
+                    <div class="card text-center shadow-sm h-100 border border-primary bg-light">
+                        <div class="card-body">
+                            <i class="fab fa-github fa-3x text-primary mb-3"></i>
+                            <h5 class="fw-bold text-primary">GitHub</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" target="_blank" class="text-decoration-none">
+                    <div class="card text-center shadow-sm h-100 border border-primary bg-light">
+                        <div class="card-body">
+                            <i class="fab fa-facebook fa-3x text-primary mb-3"></i>
+                            <h5 class="fw-bold text-primary">Facebook</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" target="_blank" class="text-decoration-none">
+                    <div class="card text-center shadow-sm h-100 border border-primary bg-light">
+                        <div class="card-body">
+                            <i class="fab fa-linkedin fa-3x text-primary mb-3"></i>
+                            <h5 class="fw-bold text-primary">LinkedIn</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

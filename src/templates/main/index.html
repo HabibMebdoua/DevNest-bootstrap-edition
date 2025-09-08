@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Welcome Section -->
+<section id="welcome" class="py-5">
+    <div class="container">
+        <div class="row align-items-center flex-column-reverse flex-md-row text-center text-md-end">
+            
+            <!-- Text Content -->
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column gap-4">
+                    {% if user.is_authenticated %} 
+                    <h1 class="display-5 fw-bold text-dark my-3">مرحبا {{ request.user.username }}</h1> 
+                    {% endif %}
+                    <h1 class="display-5 fw-bold text-dark my-3">لديك فكرة مشروع برمجي؟</h1>
+                    <p class="fs-6 text-secondary lh-lg">
+                        أنت تبتكر الفكرة، ونحن نتولى تحويلها إلى تجربة رقمية متكاملة تأسر المستخدمين — سواء كان ذلك عبر تطبيق ويب، تطبيق جوال، برنامج سطح مكتب، أو حتى فيديو تعريفي يعكس رؤيتك بدقة واحترافية
+                    </p>
+                    <div class="align-self-md-start align-self-center">
+                        <a href="{% url 'order_project' %}" class="btn btn-primary btn-lg rounded-pill px-4 py-2">
+                            أطلب مشروعك الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="col-12 col-md-6 mb-4 mb-md-0">
+                <img src="{% static '/img/index-img.png' %}" alt="Hero Image" class="img-fluid">
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services py-5 bg-light">
+    <div class="container text-center">
+        
+        <!-- Section Title -->
+        <h1 class="display-4 fw-bold my-5 text-dark animate-bounce">خدماتنا</h1>
+        
+        <!-- Services Cards -->
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Mobile Apps Card -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm bg-white hover-card position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <img src="{% static '/img/mobile.png' %}" alt="mobile" class="service-icon">
+                    </div>
+                    <div class="card-body pt-5 mt-3">
+                        <h5 class="card-title fw-bold fs-5 text-dark mb-3">تطبيقات الموبايل</h5>
+                        <p class="card-text text-secondary">نقدم مجموعة متنوعة من تطبيقات الموبايل التي تلبي احتياجاتك.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web Apps Card -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm bg-white hover-card position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <img src="{% static '/img/site.png' %}" alt="website" class="service-icon">
+                    </div>
+                    <div class="card-body pt-5 mt-3">
+                        <h5 class="card-title fw-bold fs-5 text-dark mb-3">تطبيقات الويب</h5>
+                        <p class="card-text text-secondary">نقدم مجموعة متنوعة من تطبيقات الويب التي تلبي احتياجاتك.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desktop Apps Card -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm bg-white hover-card position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <img src="{% static '/img/computer.png' %}" alt="computer" class="service-icon">
+                    </div>
+                    <div class="card-body pt-5 mt-3">
+                        <h5 class="card-title fw-bold fs-5 text-dark mb-3">تطبيقات الديسكتوب</h5>
+                        <p class="card-text text-secondary">نقدم مجموعة متنوعة من تطبيقات الديسكتوب التي تلبي احتياجاتك.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<style>
+    .service-icon {
+        width: 4rem;
+        height: 4rem;
+        background-color: white;
+        padding: 0.5rem;
+        border-radius: 50%;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+    
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .animate-bounce {
+        animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+        0%, 20%, 53%, 80%, 100% {
+            transform: translate3d(0,0,0);
+        }
+        40%, 43% {
+            transform: translate3d(0, -15px, 0);
+        }
+        70% {
+            transform: translate3d(0, -8px, 0);
+        }
+        90% {
+            transform: translate3d(0, -3px, 0);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .animate-bounce {
+            animation: none;
+        }
+    }
+</style>
+{% endblock %}

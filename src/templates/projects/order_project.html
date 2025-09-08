@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container d-flex flex-column align-items-center justify-content-center min-vh-100 py-5">
+    <h1 class="h2 fw-bold text-secondary mb-4">أطلب مشروعك الآن</h1>
+
+    <div class="col-12 col-md-8 col-lg-6">
+        <form method="post" class="bg-white p-4 rounded shadow">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100 rounded-pill mt-3">
+                إرسال الطلب
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

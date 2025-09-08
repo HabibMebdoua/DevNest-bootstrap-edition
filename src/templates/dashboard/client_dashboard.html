@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- Start Edit Modal -->
+    {% for project in projects %}
+    <div class="modal fade" id="editModal{{ project.id }}" tabindex="-1" aria-labelledby="editModalLabel{{ project.id }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+
+                <!-- Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel{{ project.id }}">
+                        {{ project.title }} - تعديل طلب المشروع
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body">
+                    <form action="{% url 'client_edit_project' project.pk %}" method="POST" class="row g-3">
+                        {% csrf_token %}
+
+                        <!-- عنوان المشروع -->
+                        <div class="col-12">
+                            <label class="form-label">عنوان المشروع</label>
+                            <input type="text" name="title" value="{{ project.title }}" placeholder="أدخل عنوان المشروع" class="form-control">
+                        </div>
+
+                        <!-- وصف المشروع -->
+                        <div class="col-12">
+                            <label class="form-label">وصف المشروع</label>
+                            <textarea name="description" rows="4" class="form-control" placeholder="أدخل وصفًا للمشروع">{{ project.description }}</textarea>
+                        </div>
+
+                        <!-- نوع المشروع -->
+                        <div class="col-12">
+                            <label class="form-label">نوع المشروع</label>
+                            <select name="type" class="form-select">
+                                <option value="web" {% if project.type == 'web' %}selected{% endif %}>تطبيق ويب</option>
+                                <option value="mobile" {% if project.type == 'mobile' %}selected{% endif %}>تطبيق موبايل</option>
+                                <option value="desktop" {% if project.type == 'desktop' %}selected{% endif %}>تطبيق ديسكتوب</option>
+                                <option value="other" {% if project.type == 'other' %}selected{% endif %}>أخرى</option>
+                            </select>
+                        </div>
+
+                        <!-- Checkbox: باوربوينت -->
+                        <div class="col-12 form-check">
+                            <input class="form-check-input" type="checkbox" name="include_ppt" id="ppt{{ project.id }}" {% if project.ppt_presentation %}checked{% endif %}>
+                            <label class="form-check-label" for="ppt{{ project.id }}">تضمين استعراض باوربوينت</label>
+                        </div>
+
+                        <!-- Checkbox: بطاقة تقنية -->
+                        <div class="col-12 form-check">
+                            <input class="form-check-input" type="checkbox" name="include_datasheet" id="ds{{ project.id }}" {% if project.tech_card %}checked{% endif %}>
+                            <label class="form-check-label" for="ds{{ project.id }}">تضمين بطاقة تقنية</label>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">حفظ</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- End Edit Modal -->
+
+    <!-- عنوان الصفحة -->
+    <div class="text-center mb-5">
+        <h1 class="h4 text-secondary">مرحبا بك في لوحة التحكم {{ request.user.username }}</h1>
+        <h2 class="h5 mt-3 p-2 bg-light rounded-pill shadow-sm">لديك {{ projects.count }} مشروع</h2>
+    </div>
+
+    <!-- Filter form -->
+    <form action="" method="get" class="row g-3 mb-5 justify-content-center">
+        {% csrf_token %}
+        <div class="col-md-3">
+            {{ project_filter.form.title }}
+        </div>
+        <div class="col-md-3">
+            {{ project_filter.form.state }}
+        </div>
+        <div class="col-md-3">
+            {{ project_filter.form.created_at }}
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">بحث</button>
+        </div>
+    </form>
+
+    <!-- جدول المشاريع -->
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle text-center shadow-sm">
+            <thead class="table-light">
+                <tr>
+                    <th>عنوان المشروع</th>
+                    <th>تاريخ البدء</th>
+                    <th>العرض التقديمي</th>
+                    <th>البطاقة التقنية</th>
+                    <th>تاريخ التسليم</th>
+                    <th>الحالة</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td class="text-start">{{ project.title }}</td>
+                    <td>{{ project.created_at }}</td>
+                    <td>{% if project.ppt_presentation %} متوفر {% else %} غير متوفر {% endif %}</td>
+                    <td>{% if project.tech_card %} متوفر {% else %} غير متوفر {% endif %}</td>
+                    <td>{% if project.delivery_date %} {{ project.delivery_date }} {% else %} غير محدد {% endif %}</td>
+                    <td>
+                        {% if project.state == 'inprogress' %}
+                            <span class="badge bg-info text-dark">قيد التطوير</span>
+                        {% elif project.state == 'completed' %}
+                            <span class="badge bg-success">مكتمل</span>
+                        {% elif project.state == 'pending' %}
+                            <span class="badge bg-secondary">معلق</span>
+                        {% else %}
+                            <span class="badge bg-light text-dark">غير معروف</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="d-flex flex-column flex-md-row gap-2 justify-content-center">
+                            <!-- زر التعديل -->
+                            <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{ project.id }}">
+                                <i class="ri-edit-line me-1"></i> تعديل
+                            </button>
+                            <!-- زر الحذف -->
+                            <a href="{% url 'client_delete_project' project.id %}" class="btn btn-sm btn-danger">
+                                <i class="ri-delete-bin-line me-1"></i> حذف
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted py-4">لا توجد مشاريع لعرضها</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}
