@@ -6,16 +6,17 @@
 <section id="welcome" class="py-5">
     <div class="container">
         <div class="row align-items-center flex-column-reverse flex-md-row text-center text-md-end">
-            
+
             <!-- Text Content -->
             <div class="col-12 col-md-6">
                 <div class="d-flex flex-column gap-4">
-                    {% if user.is_authenticated %} 
-                    <h1 class="display-5 fw-bold text-dark my-3">مرحبا {{ request.user.username }}</h1> 
+                    {% if user.is_authenticated %}
+                    <h1 class="display-5 fw-bold text-dark my-3">مرحبا {{ request.user.username }}</h1>
                     {% endif %}
                     <h1 class="display-5 fw-bold text-dark my-3">لديك فكرة مشروع برمجي؟</h1>
                     <p class="fs-6 text-secondary lh-lg">
-                        أنت تبتكر الفكرة، ونحن نتولى تحويلها إلى تجربة رقمية متكاملة تأسر المستخدمين — سواء كان ذلك عبر تطبيق ويب، تطبيق جوال، برنامج سطح مكتب، أو حتى فيديو تعريفي يعكس رؤيتك بدقة واحترافية
+                        أنت تبتكر الفكرة، ونحن نتولى تحويلها إلى تجربة رقمية متكاملة تأسر المستخدمين — سواء كان ذلك عبر
+                        تطبيق ويب، تطبيق جوال، برنامج سطح مكتب، أو حتى فيديو تعريفي يعكس رؤيتك بدقة واحترافية
                     </p>
                     <div class="align-self-md-start align-self-center">
                         <a href="{% url 'order_project' %}" class="btn btn-primary btn-lg rounded-pill px-4 py-2">
@@ -24,12 +25,12 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Hero Image -->
             <div class="col-12 col-md-6 mb-4 mb-md-0">
                 <img src="{% static '/img/index-img.png' %}" alt="Hero Image" class="img-fluid">
             </div>
-            
+
         </div>
     </div>
 </section>
@@ -37,13 +38,13 @@
 <!-- Services Section -->
 <section class="services py-5 bg-light">
     <div class="container text-center">
-        
+
         <!-- Section Title -->
         <h1 class="display-4 fw-bold my-5 text-dark animate-bounce">خدماتنا</h1>
-        
+
         <!-- Services Cards -->
         <div class="row g-4 justify-content-center">
-            
+
             <!-- Mobile Apps Card -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm bg-white hover-card position-relative">
@@ -52,11 +53,12 @@
                     </div>
                     <div class="card-body pt-5 mt-3">
                         <h5 class="card-title fw-bold fs-5 text-dark mb-3">تطبيقات الموبايل</h5>
-                        <p class="card-text text-secondary">نقدم مجموعة متنوعة من تطبيقات الموبايل التي تلبي احتياجاتك.</p>
+                        <p class="card-text text-secondary">نقدم مجموعة متنوعة من تطبيقات الموبايل التي تلبي احتياجاتك.
+                        </p>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Web Apps Card -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm bg-white hover-card position-relative">
@@ -69,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Desktop Apps Card -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm bg-white hover-card position-relative">
@@ -78,11 +80,52 @@
                     </div>
                     <div class="card-body pt-5 mt-3">
                         <h5 class="card-title fw-bold fs-5 text-dark mb-3">تطبيقات الديسكتوب</h5>
-                        <p class="card-text text-secondary">نقدم مجموعة متنوعة من تطبيقات الديسكتوب التي تلبي احتياجاتك.</p>
+                        <p class="card-text text-secondary">نقدم مجموعة متنوعة من تطبيقات الديسكتوب التي تلبي احتياجاتك.
+                        </p>
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Graduation Thesis Writing Card -->
+            <div class="col-12 col-md-6 col-lg-4 mt-5">
+                <div class="card h-100 border-0 shadow-sm bg-white hover-card position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <img src="{% static '/img/writing.png' %}" alt="document" class="service-icon">
+                    </div>
+                    <div class="card-body pt-5 mt-3">
+                        <h5 class="card-title fw-bold fs-5 text-dark mb-3">كتابة وتنسيق مذكرات التخرج</h5>
+                        <p class="card-text text-secondary">نساعدك في كتابة وتنسيق مذكرات التخرج بشكل احترافي ومنظم.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PowerPoint Presentations Card -->
+            <div class="col-12 col-md-6 col-lg-4 mt-5">
+                <div class="card h-100 border-0 shadow-sm bg-white hover-card position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <img src="{% static '/img/ppt.png' %}" alt="powerpoint" class="service-icon">
+                    </div>
+                    <div class="card-body pt-5 mt-3">
+                        <h5 class="card-title fw-bold fs-5 text-dark mb-3">إنشاء عروض تقديمية PowerPoint</h5>
+                        <p class="card-text text-secondary">تصميم عروض تقديمية احترافية وجذابة باستخدام PowerPoint.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketing Videos Card -->
+            <div class="col-12 col-md-6 col-lg-4 mt-5">
+                <div class="card h-100 border-0 shadow-sm bg-white hover-card position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <img src="{% static '/img/video.png' %}" alt="video" class="service-icon">
+                    </div>
+                    <div class="card-body pt-5 mt-3">
+                        <h5 class="card-title fw-bold fs-5 text-dark mb-3">إنشاء فيديوهات تسويقية</h5>
+                        <p class="card-text text-secondary">نبتكر فيديوهات تسويقية إبداعية تساعدك على جذب عملائك.</p>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </section>
@@ -96,35 +139,44 @@
         border-radius: 50%;
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     }
-    
+
     .hover-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
+
     .hover-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     }
-    
+
     .animate-bounce {
         animation: bounce 2s infinite;
     }
-    
+
     @keyframes bounce {
-        0%, 20%, 53%, 80%, 100% {
-            transform: translate3d(0,0,0);
+
+        0%,
+        20%,
+        53%,
+        80%,
+        100% {
+            transform: translate3d(0, 0, 0);
         }
-        40%, 43% {
+
+        40%,
+        43% {
             transform: translate3d(0, -15px, 0);
         }
+
         70% {
             transform: translate3d(0, -8px, 0);
         }
+
         90% {
             transform: translate3d(0, -3px, 0);
         }
     }
-    
+
     @media (max-width: 768px) {
         .animate-bounce {
             animation: none;
